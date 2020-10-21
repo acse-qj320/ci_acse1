@@ -8,5 +8,5 @@ class TestPi(object):
 
     def test_pi(self):
         '''Test computation of pi'''
-        my_pi = pi(2)
+        my_pi = pi(3)
         assert np.isclose(my_pi, np.pi, atol=1e-12)
