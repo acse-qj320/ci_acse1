@@ -50,16 +50,22 @@ jobs:
       run : |
         echo "::set-env name=TESTS::tests/"
 
-    - name: Install dependencies
+    - name: Linux install
+      if: matrix.os != 'macos-latest'
       run: |
-        if: matrix.os != 'macos-latest'
-          sudo apt-get install python3-setuptools -y
-        else
-          sudo homebrew install python3-setuptools -y
+        sudo apt-get install python3-setuptools -y
+    
+    - name: MacOS install
+      if: matrix.os == 'macos-latest'
+      run: |
+        sudo homebrew install python3-setuptools -y
+        
+    - name: Install dependencies
+      run : |        
         pip3 install --upgrade pip
         pip3 install -e .
         pip3 install -r requirements.txt
-
+    
     - name: Set a run prefix
       run : |
         echo "::set-env name=RUN::python3 -m"
