@@ -58,7 +58,8 @@ jobs:
     - name: MacOS install
       if: matrix.os == 'macos-latest'
       run: |
-        brew install setuptools
+        curl https://bootstrap.pypa.io/ez_setup.py -o - | python
+
         
     - name: Install dependencies
       run : |        
