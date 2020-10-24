@@ -52,7 +52,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get install python3-setuptools -y
+        if: matrix.os != 'macos-latest'
+          sudo apt-get install python3-setuptools -y
+        else
+          sudo homebrew install python3-setuptools -y
         pip3 install --upgrade pip
         pip3 install -e .
         pip3 install -r requirements.txt
