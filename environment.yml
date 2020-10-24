@@ -1,4 +1,4 @@
-name: ci
+name: ci_test
 channels:
   - defaults
   - conda-forge
@@ -6,8 +6,5 @@ dependencies:
   - python>=3.6
   - pip
   - numpy>1.16
-  - scipy
-  - matplotlib
-  - sympy
   - flake8
   - pytest

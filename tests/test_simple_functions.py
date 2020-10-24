@@ -1,26 +1,25 @@
 import pytest
-
-from simple_functions import my_sum, factorial
+import numpy as np
+from simple_functions import mysin, factorial
 
 
 class TestSimpleFunctions(object):
     '''Class to test our simple functions are working correctly'''
-
-    @pytest.mark.parametrize('iterable, expected', [
-        ([8, 7, 5], 20),
-        ((10, -2, 5, -10, 1), 4)
-    ])
-    def test_my_add(self, iterable, expected):
-        '''Test our add function'''
-        isum = my_sum(iterable)
-        assert isum == expected
 
     @pytest.mark.parametrize('number, expected', [
         (5, 120),
         (3, 6),
         (1, 1)
     ])
+
     def test_factorial(self, number, expected):
         '''Test our factorial function'''
         answer = factorial(number)
         assert answer == expected
+
+    def test_pi(self):
+        '''Test computation of pi'''
+        irange = np.linspace(0, 1, 5)
+        for i in irange:
+            my_sin = mysin(i * np.pi, 10)
+            assert np.isclose(my_sin, np.sin(i * np.pi), atol=1e-6)
