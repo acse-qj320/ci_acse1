@@ -58,7 +58,7 @@ jobs:
     - name: MacOS install
       if: matrix.os == 'macos-latest'
       run: |
-        brew install python3-setuptools -y
+        brew install python3-setuptools
         
     - name: Install dependencies
       run : |        
